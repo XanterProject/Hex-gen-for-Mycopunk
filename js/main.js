@@ -8,9 +8,11 @@ let knownShapes = [];
 
 // Создание DOM-гексагональной сетки
 function createHexGrid() {
-  const HEX_WIDTH = hexGrid.clientWidth / COLS;
-  const HEX_HEIGHT = HEX_WIDTH; // квадратные пока
-  const VERT_SPACING = HEX_HEIGHT * 0.75;
+  const HEX_WIDTH = hexGrid.clientWidth / COLS; // ширина гекса
+  const HEX_HEIGHT = HEX_WIDTH * 1.1547; // правильная высота гекса
+
+  const VERT_STEP = HEX_HEIGHT * 0.75;
+  const HORZ_STEP = HEX_WIDTH;
 
   for (let q = 0; q < COLS; q++) {
     for (let r = 0; r < ROWS; r++) {
@@ -20,7 +22,7 @@ function createHexGrid() {
       cell.dataset.r = r;
 
       const left = q * HEX_WIDTH;
-      const top = r * VERT_SPACING + (q % 2 ? VERT_SPACING / 2 : 0);
+      const top = r * VERT_STEP + (q % 2 ? VERT_STEP / 2 : 0);
 
       cell.style.position = "absolute";
       cell.style.width = `${HEX_WIDTH}px`;

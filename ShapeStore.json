@@ -1,0 +1,13 @@
+[
+  {
+    "id": "test-square",
+    "name": "Квадрат",
+    "category": "Тест",
+    "shape": [[0,0],[1,0],[0,1],[1,1]],
+    "effects": ["test"],
+    "stats": {
+      "HP": 10,
+      "Attack": 5
+    }
+  }
+]

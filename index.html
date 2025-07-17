@@ -4,39 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hex Builder</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-    }
-    #hexCanvas {
-      width: 100vw;
-      height: 50vh;
-      display: block;
-    }
-    .sidebar {
-      padding: 10px;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div id="app">
-    <canvas id="hexCanvas"></canvas>
-    <div class="sidebar">
-      <h2>Инвентарь</h2>
-      <div id="inventoryCanvasContainer">
-        <canvas id="inventoryCanvas" width="800" height="300"></canvas>
-      </div>
-      <button id="saveButton">💾 Сохранить JSON</button>
-      <input type="file" id="loadFile" accept=".json">
-      <h2>Конструктор</h2>
-      <button id="startEditor">🧱 Создать фигуру</button>
-      <button id="finishEditor">✅ Завершить</button>
+  <div class="workspace">
+    <div class="hex-grid" id="hexGrid"></div>
+    <div class="side-panel">
+      <div id="itemList"></div>
     </div>
   </div>
+
+  <div class="controls">
+    <button id="buildb">Сборщик</button>
+    <button id="constb">Конструктор</button>
+    <button id="saveJson">💾 Сохранить JSON</button>
+    <label for="loadJson" style="display:inline-block">
+      <button>💾 Загрузить JSON</button>
+    </label>
+    <input type="file" id="loadJson" accept="application/json" />
+  </div>
+
+  <div id="log"></div>
 
   <script src="main.js"></script>
 </body>

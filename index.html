@@ -1,11 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hex-gen</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hex Builder</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+    #hexCanvas {
+      width: 100vw;
+      height: 50vh;
+      display: block;
+    }
+    .sidebar {
+      padding: 10px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to hex-gen</h1>
+  <div id="app">
+    <canvas id="hexCanvas"></canvas>
+    <div class="sidebar">
+      <h2>Инвентарь</h2>
+      <div id="inventoryCanvasContainer">
+        <canvas id="inventoryCanvas" width="800" height="300"></canvas>
+      </div>
+      <button id="saveButton">💾 Сохранить JSON</button>
+      <input type="file" id="loadFile" accept=".json">
+      <h2>Конструктор</h2>
+      <button id="startEditor">🧱 Создать фигуру</button>
+      <button id="finishEditor">✅ Завершить</button>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
 </body>
 </html>

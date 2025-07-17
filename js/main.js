@@ -8,15 +8,26 @@ let knownShapes = [];
 
 // Создание DOM-гексагональной сетки
 function createHexGrid() {
-  for (let r = 0; r < ROWS; r++) {
-    for (let q = 0; q < COLS; q++) {
+  const HEX_WIDTH = hexGrid.clientWidth / COLS;
+  const HEX_HEIGHT = HEX_WIDTH; // квадратные пока
+  const VERT_SPACING = HEX_HEIGHT * 0.75;
+
+  for (let q = 0; q < COLS; q++) {
+    for (let r = 0; r < ROWS; r++) {
       const cell = document.createElement("div");
       cell.className = "hex";
       cell.dataset.q = q;
       cell.dataset.r = r;
 
-      // смещение по чётности
-      cell.style.transform = `translateY(${(q % 2 === 0 ? 0 : 30)}px)`;
+      const left = q * HEX_WIDTH;
+      const top = r * VERT_SPACING + (q % 2 ? VERT_SPACING / 2 : 0);
+
+      cell.style.position = "absolute";
+      cell.style.width = `${HEX_WIDTH}px`;
+      cell.style.height = `${HEX_HEIGHT}px`;
+      cell.style.left = `${left}px`;
+      cell.style.top = `${top}px`;
+
       hexGrid.appendChild(cell);
     }
   }

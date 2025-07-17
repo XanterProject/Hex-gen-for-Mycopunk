@@ -4,16 +4,21 @@ const logDiv = document.getElementById("log");
 
 const COLS = 7;
 const ROWS = 6;
+
+const availableWidth = hexGrid.clientWidth;
+const availableHeight = hexGrid.clientHeight;
+
+const maxHexWidthByWidth = availableWidth / COLS;
+const maxHexWidthByHeight = availableHeight / (ROWS * 0.75 + 0.25); // учитываем плотную вертикаль
+
+const HEX_WIDTH = Math.min(maxHexWidthByWidth, maxHexWidthByHeight);
+const HEX_HEIGHT = HEX_WIDTH * 1.1547;
+const VERT_SPACING = HEX_HEIGHT * 0.75;
 let knownShapes = [];
+
 
 // Создание DOM-гексагональной сетки
 function createHexGrid() {
-  const HEX_WIDTH = hexGrid.clientWidth / COLS; // ширина гекса
-  const HEX_HEIGHT = HEX_WIDTH * 1.1547; // правильная высота гекса
-
-  const VERT_STEP = HEX_HEIGHT * 0.75;
-  const HORZ_STEP = HEX_WIDTH;
-
   for (let q = 0; q < COLS; q++) {
     for (let r = 0; r < ROWS; r++) {
       const cell = document.createElement("div");
